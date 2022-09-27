@@ -14,7 +14,7 @@ class Efectivo extends Pago{
     }
     
     public float calcDevolucion(){
-        
+        return 0; // Pa' que no webeee con errores
     }
 }
 
