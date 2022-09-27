@@ -1,13 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package lamejortarea;
+import java.util.*;
 
-/**
- *
- * @author joscortes2021
- */
 public class OrdenCompra {
+    private Date fecha;
+    private String estado;
     
+    public int calcPrecioSinIva(){
+        return 0;
+    }
+    public int calcIVA(){
+        return 19;
+    }
+    public int calcPrecio(){
+        return 100;
+    }
+    public int Peso(){
+        return 10;
+    }
 }
