@@ -19,7 +19,7 @@ abstract class DocTributario {
     public String getRut(){
         return rut;
     }
-    public Date fecha(){
+    public Date getFecha(){
         return fecha;
     }
 }

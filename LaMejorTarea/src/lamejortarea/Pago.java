@@ -25,6 +25,12 @@ class Transferencia extends Pago{
     public Transferencia(){
         super();
     }
+    public String getBanco(){
+        return banco;
+    }
+    public String getNumCuenta(){
+        return numCuenta;
+    }
 }
 
 class Tarjeta extends Pago{
@@ -34,7 +40,6 @@ class Tarjeta extends Pago{
     public Tarjeta(){
         super();
     }
-    
     public String getTipo(){
         return tipo;
     }

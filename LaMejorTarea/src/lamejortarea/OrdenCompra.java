@@ -17,6 +17,12 @@ class OrdenCompra {
     public int Peso(){
         return 10;
     }
+    public Date getFecha(){
+        return fecha;
+    }
+    public String getEstado(){
+        return estado;
+    }
 }
 
 class DetalleOrden {
@@ -34,11 +40,29 @@ class DetalleOrden {
     public int calcPeso(){
         return 10;
     }
+    public int getCantidad(){
+        return cantidad;
+    }
 }
 
 class Articulo {
     private float peso;
     private String nombre;
-    private String descripción;
+    private String descripcion;
     private float precio;
+    
+    public Articulo(){
+    }
+    public float getPeso(){
+        return peso;
+    }
+    public String getNombre(){
+        return nombre;
+    }
+    public String getDescripcion(){
+        return descripcion;
+    }
+    public float getPrecio(){
+        return precio;
+    }
 }
