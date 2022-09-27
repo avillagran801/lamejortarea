@@ -1,0 +1,10 @@
+Para subir cositas:
+
+git pull
+git add .
+git commit -m "mensajito"
+git push
+
+Para moverse por branches
+
+git checkout nombredelabranch
