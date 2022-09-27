@@ -34,4 +34,11 @@ class Tarjeta extends Pago{
     public Tarjeta(){
         super();
     }
+    
+    public String getTipo(){
+        return tipo;
+    }
+    public String getNumTransaccion(){
+        return numTransaccion;
+    }
 }

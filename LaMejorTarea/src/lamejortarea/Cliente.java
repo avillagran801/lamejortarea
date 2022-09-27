@@ -14,11 +14,22 @@ class Cliente{
     
     public Cliente(){
     }
+    
+    public String getNombre(){
+        return nombre;
+    }
+    public String getRut(){
+        return rut;
+    }
 }
 
 class Direccion{
     private String direccion;
     
     public Direccion(){
+    }
+    
+    public String getDireccion(){
+        return direccion;
     }
 }
