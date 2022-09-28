@@ -11,6 +11,7 @@ package lamejortarea;
 class Cliente{
     private String nombre;
     private String rut;
+    private Direccion direccion;
     
     public Cliente(){
     }
@@ -20,6 +21,12 @@ class Cliente{
     }
     public String getRut(){
         return rut;
+    }
+    public void setNombre(String nombre_aux){
+        nombre = nombre_aux;
+    }
+    public void setRut(String rut_aux){
+        rut = rut_aux;
     }
 }
 
@@ -31,5 +38,8 @@ class Direccion{
     
     public String getDireccion(){
         return direccion;
+    }
+    public void setDireccion(String direccion_aux){
+        direccion = direccion_aux;
     }
 }
