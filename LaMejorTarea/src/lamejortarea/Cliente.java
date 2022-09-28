@@ -13,9 +13,10 @@ class Cliente{
     private String rut;
     private Direccion direccion;
     
-    public Cliente(String nombre_aux, String rut_aux){
+    public Cliente(String nombre_aux, String rut_aux, Direccion direc_aux){
         nombre = nombre_aux;
         rut = rut_aux;
+        direccion = direc_aux;
     }
     
     public String getNombre(){
@@ -24,11 +25,17 @@ class Cliente{
     public String getRut(){
         return rut;
     }
+    public Direccion getDireccion(){
+        return direccion;
+    }
     public void cambiarNombre(String nombre_aux){
         nombre = nombre_aux;
     }
     public void cambiarRut(String rut_aux){
         rut = rut_aux;
+    }
+    public void cambiarDireccion(String direccion_aux){ // Usa el método del mismo nombre en la clase Direccion
+        direccion.cambiarDireccion(direccion_aux);
     }
 }
 
