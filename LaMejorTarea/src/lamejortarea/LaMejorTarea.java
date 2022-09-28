@@ -11,11 +11,14 @@ import java.util.*;
  */
 public class LaMejorTarea {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Cliente cliente = new Cliente();
+        cliente.setNombre("Juanito");
+        cliente.setRut("12345-k");
+        
+        OrdenCompra orden = new OrdenCompra(cliente);
+        System.out.println(orden.getFecha());
+        System.out.println(orden.cliente.getNombre());
     }
     
 }

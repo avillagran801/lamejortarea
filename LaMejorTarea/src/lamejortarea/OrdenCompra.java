@@ -1,11 +1,16 @@
 package lamejortarea;
-import java.util.*;
+import java.util.Date;
 
 class OrdenCompra {
     private Date fecha;
     private String estado;
+    private DetalleOrden detalle;
+    public Cliente cliente;
     
-    public OrdenCompra(){
+    public OrdenCompra(Cliente cliente_aux){
+        DetalleOrden detalle = new DetalleOrden();
+        fecha = new Date();
+        cliente = cliente_aux;
     }
     
     public int calcPrecioSinIva(){
