@@ -52,8 +52,8 @@ class OrdenCompra {
         }
         return totalPeso;
     }
-    public Calendar getFecha(){
-        return fecha;
+    public Date getFecha(){
+        return fecha.getTime();
     }
     
     public String getEstado(){

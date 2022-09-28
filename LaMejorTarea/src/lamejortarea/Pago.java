@@ -5,7 +5,7 @@ import java.util.Calendar; // Se usa calendar para "sumar" meses
 
 abstract class Pago{
     protected float monto; // A diferencia del UML, las variables monto y fecha
-    protected Date fecha;  // son protected para poder ser heredables.
+    protected Calendar fecha;  // son protected para poder ser heredables.
 }
 
 //Se asume que con transferencia y tarjeta se pagará el monto justo.
@@ -22,6 +22,7 @@ class Efectivo extends Pago{
     }
     
     public void Pago(int dinero, OrdenCompra order, int cuotas){
+        fecha = Calendar.getInstance();
         orden = order;
         if (cuotas < 0){
             System.out.println ("Intentelo de nuevo");
@@ -36,8 +37,10 @@ class Efectivo extends Pago{
             }
             System.out.println("Primera cuota a pagar: " + monto);
             System.out.println("Se le devolverá: " + calcDevolucion(orden, dinero));
-            System.out.println("Próxima cuota a pagar: " + monto + "en " + fecha);
-            // ARREGLAR TEMA DE FECHA
+            fecha.add(Calendar.MONTH, 1);
+            System.out.println("Próxima cuota a pagar: " + monto + "en " + 
+                    fecha.getTime());
+            fecha.add(Calendar.MONTH, -1);
         } else {
             System.out.println("Monto a pagar: " + monto);
             System.out.println("Se le devolverá: " + calcDevolucion(orden, dinero));
@@ -71,8 +74,10 @@ class Transferencia extends Pago{
         if (cuotas != 1 && cuotas !=0){
             monto = orden.calcPrecio()/(float)cuotas;
             System.out.println("Primera cuota a pagar: " + monto);
-            System.out.println("Próxima cuota a pagar: " + monto + "en " + fecha);
-            // ARREGLAR TEMA DE FECHA
+            fecha.add(Calendar.MONTH, 1);
+            System.out.println("Próxima cuota a pagar: " + monto + "en " + 
+                    fecha.getTime());
+            fecha.add(Calendar.MONTH, -1);
         } else {
             System.out.println("Monto a pagar: " + monto);
         }
@@ -105,8 +110,10 @@ class Tarjeta extends Pago{
         if (cuotas != 1 && cuotas !=0){
             monto = orden.calcPrecio()/(float)cuotas;
             System.out.println("Primera cuota a pagar: " + monto);
-            System.out.println("Próxima cuota a pagar: " + monto + "en " + fecha);
-            // ARREGLAR TEMA DE FECHA
+            fecha.add(Calendar.MONTH, 1);
+            System.out.println("Próxima cuota a pagar: " + monto + "en " + 
+                    fecha.getTime());
+            fecha.add(Calendar.MONTH, -1);
         } else {
             System.out.println("Monto a pagar: " + monto);
         }

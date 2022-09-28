@@ -48,7 +48,7 @@ public class LaMejorTarea {
         System.out.println("IVA: $" + orden.calcIVA());
         System.out.println("Total: $" + orden.calcPrecio());
         System.out.println("Peso: " + orden.calcPeso() + " kilos");
-        System.out.println("Fecha: " + orden.getFecha()); //Mejorar a futuro.
+        System.out.println("Fecha: " + orden.getFecha());
         
     }
     
