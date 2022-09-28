@@ -33,6 +33,12 @@ public class LaMejorTarea {
         OrdenCompra orden = new OrdenCompra();
         System.out.println(orden.getFecha());
         orden.agregarOrden(art1, 3);
+        orden.agregarOrden(art2, 5);
+        
+        System.out.println("Sin IVA: $" + orden.calcPrecioSinIVA());
+        System.out.println("IVA: $" + orden.calcIVA());
+        System.out.println("Total: $" + orden.calcPrecio());
+        System.out.println("Peso: " + orden.calcPeso() + " kilos");
         
     }
     
