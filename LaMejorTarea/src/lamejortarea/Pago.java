@@ -1,5 +1,7 @@
 package lamejortarea;
 
+import java.util.Date;
+
 abstract class Pago{
     private float monto;
     private Date fecha;

@@ -5,6 +5,9 @@ class OrdenCompra {
     private Date fecha;
     private String estado;
     
+    public OrdenCompra(){
+    }
+    
     public int calcPrecioSinIva(){
         return 0;
     }
