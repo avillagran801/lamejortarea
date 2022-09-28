@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package lamejortarea;
-import java.util.*;
+import java.util.Date;
+import java.util.Calendar; //Se usa Calendar para "sumar" meses
 
 /**
  *
@@ -33,6 +34,10 @@ public class LaMejorTarea {
         // CREACIÓN ORDEN DE COMPRA, ASIGNAR CLIENTE Y AGREGAR ÓRDENES
         
         OrdenCompra orden = new OrdenCompra();
+        
+        // Pepancho dice: DetalleOrden Detalle = new DetalleOrden(orden);
+        // Para que sea composición
+        
         orden.asignarCliente(cliente2);
         orden.agregarOrden(art1, 3);
         orden.agregarOrden(art2, 5);
@@ -43,6 +48,7 @@ public class LaMejorTarea {
         System.out.println("IVA: $" + orden.calcIVA());
         System.out.println("Total: $" + orden.calcPrecio());
         System.out.println("Peso: " + orden.calcPeso() + " kilos");
+        System.out.println("Fecha: " + orden.getFecha()); //Mejorar a futuro.
         
     }
     

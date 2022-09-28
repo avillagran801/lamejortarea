@@ -1,6 +1,7 @@
 package lamejortarea;
 
 import java.util.Date;
+import java.util.Calendar; // Se usa calendar para "sumar" meses
 
 abstract class Pago{
     protected float monto; // A diferencia del UML, las variables monto y fecha
