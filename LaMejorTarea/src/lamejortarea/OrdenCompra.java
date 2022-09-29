@@ -6,7 +6,8 @@ class OrdenCompra {
     private Date fecha;
     private String estado;
     private ArrayList<DetalleOrden> detalle;
-    public Cliente cliente;
+    private Cliente cliente;
+    private DocTributario docTributario;
     
     public OrdenCompra(){
         detalle = new ArrayList<DetalleOrden>(); // Crea el arreglo de detalles
