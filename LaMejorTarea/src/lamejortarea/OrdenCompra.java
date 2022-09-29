@@ -1,9 +1,11 @@
 package lamejortarea;
 import java.util.Date;
+import java.util.Calendar;
 import java.util.ArrayList;
 
 class OrdenCompra {
-    private Date fecha;
+    //private Date fecha;
+    private Calendar fecha;
     private String estado;
     private ArrayList<DetalleOrden> detalle;
     private Cliente cliente;
@@ -11,7 +13,8 @@ class OrdenCompra {
     
     public OrdenCompra(){
         detalle = new ArrayList<DetalleOrden>(); // Crea el arreglo de detalles
-        fecha = new Date();
+        fecha = Calendar.getInstance();
+        //fecha = new Date();
     }
     
     public void agregarOrden(Articulo articulo, int numItem){ // Creamos la orden de un nuevo ítem
@@ -51,8 +54,9 @@ class OrdenCompra {
         return totalPeso;
     }
     public Date getFecha(){
-        return fecha;
+        return fecha.getTime();
     }
+    
     public String getEstado(){
         return estado;
     }
