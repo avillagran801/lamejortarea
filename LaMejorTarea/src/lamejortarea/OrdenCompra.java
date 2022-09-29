@@ -1,38 +1,61 @@
 package lamejortarea;
 import java.util.Date;
+import java.util.Calendar;
 import java.util.ArrayList;
 
 class OrdenCompra {
-    private Date fecha;
+    //private Date fecha;
+    private Calendar fecha;
     private String estado;
     private ArrayList<DetalleOrden> detalle;
     public Cliente cliente;
     
     public OrdenCompra(){
         detalle = new ArrayList<DetalleOrden>(); // Crea el arreglo de detalles
-        fecha = new Date();
+        fecha = Calendar.getInstance();
+        //fecha = new Date();
     }
     
     public void agregarOrden(Articulo articulo, int numItem){ // Creamos la orden de un nuevo ítem
         DetalleOrden orden_aux = new DetalleOrden(articulo, numItem);
         detalle.add(orden_aux);
     }
+    public void asignarCliente(Cliente cliente_aux){
+        cliente = cliente_aux;
+    }
     
-    public int calcPrecioSinIva(){
-        return 0;
+    public float calcPrecioSinIVA(){
+        float totalSinIVA = 0;
+        for(int i=0; i<detalle.size(); i++){
+            totalSinIVA = totalSinIVA + detalle.get(i).calcPrecioSinIVA();
+        }
+        return totalSinIVA;
     }
-    public int calcIVA(){
-        return 19;
+    public float calcIVA(){
+        float totalIva = 0;
+        for(int i=0; i<detalle.size(); i++){
+            totalIva = totalIva + detalle.get(i).calcIVA();
+        }
+        return totalIva;
     }
-    public int calcPrecio(){
-        return 100;
+    public float calcPrecio(){
+        float totalPrecio = 0;
+        for(int i=0; i<detalle.size(); i++){
+            totalPrecio = totalPrecio + detalle.get(i).calcPrecio();
+        }
+        return totalPrecio;
     }
-    public int Peso(){
-        return 10;
+    public float calcPeso(){
+        float totalPeso = 0;
+        for(int i=0; i<detalle.size(); i++){
+            totalPeso= totalPeso + detalle.get(i).calcPeso();
+        }
+        return totalPeso;
     }
     public Date getFecha(){
-        return fecha;
+        return fecha.getTime();
     }
+    
     public String getEstado(){
         return estado;
     }
@@ -79,13 +102,25 @@ class Articulo {
     public float getPeso(){
         return peso;
     }
+    public void cambiarPeso(float peso_aux){
+        peso = peso_aux;
+    }
     public String getNombre(){
         return nombre;
+    }
+    public void cambiarNombre(String nombre_aux){
+        nombre = nombre_aux;
     }
     public String getDescripcion(){
         return descripcion;
     }
+    public void cambiarDescripcion(String desc_aux){
+        descripcion = desc_aux;
+    }
     public float getPrecio(){
         return precio;
+    }
+    public void cambiarPrecio(float precio_aux){
+        precio = precio_aux;
     }
 }

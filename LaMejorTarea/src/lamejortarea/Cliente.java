@@ -13,7 +13,10 @@ class Cliente{
     private String rut;
     private Direccion direccion;
     
-    public Cliente(){
+    public Cliente(String nombre_aux, String rut_aux, Direccion direc_aux){
+        nombre = nombre_aux;
+        rut = rut_aux;
+        direccion = direc_aux;
     }
     
     public String getNombre(){
@@ -22,24 +25,31 @@ class Cliente{
     public String getRut(){
         return rut;
     }
-    public void setNombre(String nombre_aux){
+    public Direccion getDireccion(){
+        return direccion;
+    }
+    public void cambiarNombre(String nombre_aux){
         nombre = nombre_aux;
     }
-    public void setRut(String rut_aux){
+    public void cambiarRut(String rut_aux){
         rut = rut_aux;
+    }
+    public void cambiarDireccion(String direccion_aux){ // Usa el método del mismo nombre en la clase Direccion
+        direccion.cambiarDireccion(direccion_aux);
     }
 }
 
 class Direccion{
     private String direccion;
     
-    public Direccion(){
+    public Direccion(String direc_aux){
+        direccion = direc_aux;
     }
     
     public String getDireccion(){
         return direccion;
     }
-    public void setDireccion(String direccion_aux){
+    public void cambiarDireccion(String direccion_aux){
         direccion = direccion_aux;
     }
 }
