@@ -1,6 +1,11 @@
 package lamejortarea;
 
-import java.util.Date;
+// Pepancho: Falta implementar método tal que el monto a pagar en OrdenCompra
+// es afectado por cada Pago que se haga
+
+//Se asume que con transferencia y tarjeta se pagará el monto justo.
+//Solo dinero tiene la opción de agregar dinero.
+
 import java.util.Calendar; // Se usa calendar para "sumar" meses
 
 abstract class Pago{
@@ -8,55 +13,64 @@ abstract class Pago{
     protected Calendar fecha;  // son protected para poder ser heredables.
 }
 
-//Se asume que con transferencia y tarjeta se pagará el monto justo.
-//Solo dinero tiene la opción de ingresar el monto al momento de pagar.
-
 class Efectivo extends Pago{
-    private OrdenCompra orden;
+    private int dinero;
+    
     public Efectivo(){
         super();
+        dinero = 0;
     }
     
-    public float calcDevolucion(OrdenCompra costo, int dinero){
+    public void añadirDinero(int money){
+        dinero = dinero + money;
+    }
+    
+    public float calcDevolucion(OrdenCompra costo){
         return (float)dinero-costo.calcPrecio();
     }
     
-    public void Pago(int dinero, OrdenCompra order, int cuotas){
+    public void Pago(OrdenCompra order, int cuotas){
         fecha = Calendar.getInstance();
-        orden = order;
         if (cuotas < 0){
             System.out.println ("Intentelo de nuevo");
             return;
         }
         System.out.println("Usted pagará en " + cuotas + " cuota(s)");
         if (cuotas != 1 && cuotas !=0){
-            monto = orden.calcPrecio()/(float)cuotas;
+            monto = order.calcPrecio()/(float)cuotas;
             if (monto - dinero > 0){
                 System.out.println("Dinero insuficiente.");
                 return;
             }
             System.out.println("Primera cuota a pagar: " + monto);
-            System.out.println("Se le devolverá: " + calcDevolucion(orden, dinero));
+            System.out.println("Se le devolverá: " + calcDevolucion(order));
             fecha.add(Calendar.MONTH, 1);
             System.out.println("Próxima cuota a pagar: " + monto + "en " + 
                     fecha.getTime());
             fecha.add(Calendar.MONTH, -1);
         } else {
+            if (monto - dinero > 0){
+                System.out.println("Dinero insuficiente.");
+                return;
+            }
             System.out.println("Monto a pagar: " + monto);
-            System.out.println("Se le devolverá: " + calcDevolucion(orden, dinero));
+            System.out.println("Se le devolverá: " + calcDevolucion(order));
         }
+    }
+    
+    public String toString(){
+        return "Dinero: " + dinero;
     }
 }
 
 class Transferencia extends Pago{
     private String banco;
     private String numCuenta;
-    private OrdenCompra orden;
     
-    public Transferencia(String bank, String num){
+    public Transferencia(String bank, String account){
         super();
         banco = bank;
-        numCuenta = num;
+        numCuenta = account;
     }
     public String getBanco(){
         return banco;
@@ -64,15 +78,19 @@ class Transferencia extends Pago{
     public String getNumCuenta(){
         return numCuenta;
     }
+    
+    public String toString(){
+        return "Banco: " + banco + "\nNúmero de cuenta: " + numCuenta;
+    }
+    
     public void Pago(OrdenCompra order, int cuotas){
-        orden = order;
         if (cuotas < 0){
             System.out.println ("Intentelo de nuevo");
             return;
         }
         System.out.println("Usted pagará en " + cuotas + " cuota(s)");
         if (cuotas != 1 && cuotas !=0){
-            monto = orden.calcPrecio()/(float)cuotas;
+            monto = order.calcPrecio()/(float)cuotas;
             System.out.println("Primera cuota a pagar: " + monto);
             fecha.add(Calendar.MONTH, 1);
             System.out.println("Próxima cuota a pagar: " + monto + "en " + 
@@ -87,12 +105,11 @@ class Transferencia extends Pago{
 class Tarjeta extends Pago{
     private String tipo;
     private String numTransaccion;
-    private OrdenCompra orden;
     
-    public Tarjeta(String type, String tran){
+    public Tarjeta(String type, String number){
         super();
         tipo = type;
-        numTransaccion = tran;
+        numTransaccion = number;
     }
     public String getTipo(){
         return tipo;
@@ -101,14 +118,13 @@ class Tarjeta extends Pago{
         return numTransaccion;
     }
     public void Pago(OrdenCompra order, int cuotas){
-        orden = order;
         if (cuotas < 0){
             System.out.println ("Intentelo de nuevo");
             return;
         }
         System.out.println("Usted pagará en " + cuotas + " cuota(s)");
         if (cuotas != 1 && cuotas !=0){
-            monto = orden.calcPrecio()/(float)cuotas;
+            monto = order.calcPrecio()/(float)cuotas;
             System.out.println("Primera cuota a pagar: " + monto);
             fecha.add(Calendar.MONTH, 1);
             System.out.println("Próxima cuota a pagar: " + monto + "en " + 
@@ -117,5 +133,9 @@ class Tarjeta extends Pago{
         } else {
             System.out.println("Monto a pagar: " + monto);
         }
+    }
+    
+    public String toString(){
+        return "Tipo: " + tipo + "\nNumero de Transaccion: " + numTransaccion;
     }
 }

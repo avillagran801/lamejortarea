@@ -2,10 +2,6 @@ package lamejortarea;
 import java.util.Date;
 import java.util.Calendar; //Se usa Calendar para "sumar" meses
 
-/**
- *
- * @author joscortes2021
- */
 public class LaMejorTarea {
 
     public static void main(String[] args) {
@@ -31,7 +27,7 @@ public class LaMejorTarea {
         
         OrdenCompra orden = new OrdenCompra();
         
-        // Pepancho dice: DetalleOrden Detalle = new DetalleOrden(orden);
+        // Pepancho: DetalleOrden Detalle = new DetalleOrden(orden);
         // Para que sea composición
         
         orden.asignarCliente(cliente2);
@@ -39,12 +35,16 @@ public class LaMejorTarea {
         orden.agregarOrden(art2, 5);
         
         // IMPRIMIR INFORMACIÓN RELACIONADA A LA COMPRA
+        // Pepancho: No habría que crear un toString que haga todo esto?
         
         System.out.println("Sin IVA: $" + orden.calcPrecioSinIVA());
         System.out.println("IVA: $" + orden.calcIVA());
         System.out.println("Total: $" + orden.calcPrecio());
         System.out.println("Peso: " + orden.calcPeso() + " kilos");
-        System.out.println("Fecha: " + orden.getFecha());
+        //System.out.println("Fecha: " + orden.getFecha());
+        // Pepancho: Al momento de hacer toString, se escribiría como fecha
+        // Por mientras, getFecha() devolverá la ensalada de números de
+        // calendar.
         
     }
     

@@ -1,19 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package lamejortarea;
 
-import java.util.Date;
+import java.util.Calendar;
 
-/**
- *
- * @author anvillagran2021
- */
 abstract class DocTributario {
-    private String numero;
-    private String rut;
-    private Date fecha;
+    protected String numero; // A diferencia del UML, las variables numero, rut,
+    protected String rut;    // y fecha son protected en vez de private para que
+    protected Calendar fecha;// sean heredables
     
     public String getNumero(){
         return numero;
@@ -21,19 +13,30 @@ abstract class DocTributario {
     public String getRut(){
         return rut;
     }
-    public Date getFecha(){
+    public Calendar getFecha(){
         return fecha;
     }
 }
 
 class Boleta extends DocTributario{
+    
     public Boleta(){
         super();
+    }
+    
+    public void AsociarBoleta(OrdenCompra order_aux){
+        rut = order_aux.getCliente().getRut();
+        fecha = order_aux.getFecha();
     }
 }
 
 class Factura extends DocTributario{
     public Factura(){
         super();
+    }
+    
+    public void AsociarFactura(OrdenCompra order_aux){
+        rut = order_aux.getCliente().getRut();
+        fecha = order_aux.getFecha();
     }
 }

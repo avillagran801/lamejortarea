@@ -1,13 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package lamejortarea;
 
-/**
- *
- * @author anvillagran2021
- */
+
 class Cliente{
     private String nombre;
     private String rut;
@@ -25,17 +18,18 @@ class Cliente{
     public String getRut(){
         return rut;
     }
-    public Direccion getDireccion(){
-        return direccion;
-    }
     public void cambiarNombre(String nombre_aux){
         nombre = nombre_aux;
     }
     public void cambiarRut(String rut_aux){
         rut = rut_aux;
     }
-    public void cambiarDireccion(String direccion_aux){ // Usa el método del mismo nombre en la clase Direccion
-        direccion.cambiarDireccion(direccion_aux);
+    public void cambiarDireccion(String direccion_aux){ // Usa el método del
+        direccion.cambiarDireccion(direccion_aux);   // mismo nombre en la clase Direccion
+    }
+    
+    public String toString(){
+        return "Nombre: " + nombre + "\nRut: " + rut +"\n" + direccion.toString();
     }
 }
 
@@ -51,5 +45,8 @@ class Direccion{
     }
     public void cambiarDireccion(String direccion_aux){
         direccion = direccion_aux;
+    }
+    public String toString(){
+        return "Direccion: " + direccion;
     }
 }

@@ -1,20 +1,17 @@
 package lamejortarea;
-import java.util.Date;
 import java.util.Calendar;
 import java.util.ArrayList;
 
 class OrdenCompra {
-    //private Date fecha;
     private Calendar fecha;
     private String estado;
     private ArrayList<DetalleOrden> detalle;
     private Cliente cliente;
-    private DocTributario docTributario;
     
     public OrdenCompra(){
         detalle = new ArrayList<DetalleOrden>(); // Crea el arreglo de detalles
         fecha = Calendar.getInstance();
-        //fecha = new Date();
+        estado = "En proceso de pago.";
     }
     
     public void agregarOrden(Articulo articulo, int numItem){ // Creamos la orden de un nuevo ítem
@@ -53,12 +50,25 @@ class OrdenCompra {
         }
         return totalPeso;
     }
-    public Date getFecha(){
-        return fecha.getTime();
+    public Calendar getFecha(){
+        return fecha;
     }
     
     public String getEstado(){
         return estado;
+    }
+    
+    public Cliente getCliente(){
+        return cliente;
+    }
+    
+    public String toString(){
+        String result;
+        result = "Fecha: " + fecha.toString() + "Estado: " + estado + "Cliente: "
+                + cliente.toString();
+        
+        return result;
+        // Falta agregar el toString() de detalle
     }
 }
 
@@ -123,5 +133,9 @@ class Articulo {
     }
     public void cambiarPrecio(float precio_aux){
         precio = precio_aux;
+    }
+    public String toString(){
+        return "Nombre: " + nombre + "\nDescripcion: " + descripcion +
+                "\nPeso (en kg): " + peso + "\nPrecio: " + precio;
     }
 }
