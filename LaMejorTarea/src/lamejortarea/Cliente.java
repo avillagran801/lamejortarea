@@ -18,6 +18,9 @@ class Cliente{
     public String getRut(){
         return rut;
     }
+    public String getDireccion(){
+        return direccion.getDireccion();
+    }
     public void cambiarNombre(String nombre_aux){
         nombre = nombre_aux;
     }

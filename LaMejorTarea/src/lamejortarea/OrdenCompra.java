@@ -7,16 +7,19 @@ class OrdenCompra {
     private String estado;
     private ArrayList<DetalleOrden> detalle;
     private Cliente cliente;
+    private float pago; // Para jugar con el pago. Cuanto falta para pagar la
+                        // orden completa.
     
     public OrdenCompra(){
         detalle = new ArrayList<DetalleOrden>(); // Crea el arreglo de detalles
         fecha = Calendar.getInstance();
         estado = "En proceso de pago.";
+        pago = 0f;
     }
     
-    public void agregarOrden(Articulo articulo, int numItem){ // Creamos la orden de un nuevo ítem
-        DetalleOrden orden_aux = new DetalleOrden(articulo, numItem);
-        detalle.add(orden_aux);
+    public void agregarPedido(DetalleOrden detail){ // Creamos la orden de un nuevo ítem
+        detalle.add(detail);
+        pago = calcPrecio();
     }
     public void asignarCliente(Cliente cliente_aux){
         cliente = cliente_aux;
@@ -29,6 +32,7 @@ class OrdenCompra {
         }
         return totalSinIVA;
     }
+    
     public float calcIVA(){
         float totalIva = 0;
         for(int i=0; i<detalle.size(); i++){
@@ -36,6 +40,7 @@ class OrdenCompra {
         }
         return totalIva;
     }
+    
     public float calcPrecio(){
         float totalPrecio = 0;
         for(int i=0; i<detalle.size(); i++){
@@ -43,6 +48,7 @@ class OrdenCompra {
         }
         return totalPrecio;
     }
+    
     public float calcPeso(){
         float totalPeso = 0;
         for(int i=0; i<detalle.size(); i++){
@@ -50,6 +56,7 @@ class OrdenCompra {
         }
         return totalPeso;
     }
+    
     public Calendar getFecha(){
         return fecha;
     }
@@ -62,21 +69,44 @@ class OrdenCompra {
         return cliente;
     }
     
+    public float getPago(){
+        return pago;
+    }
+    
+    public void setEstado(String status){
+        estado = status;
+    }
+    
+    public void setPago(float dinero){
+        pago = pago - dinero;
+        if(pago == 0){
+            setEstado("Completado!");
+        }
+    }
+    
     public String toString(){
         String result;
-        result = "Fecha: " + fecha.toString() + "Estado: " + estado + "Cliente: "
-                + cliente.toString();
-        
+        result = "DETALLES DE ORDEN\nFecha: " + fecha.getTime() + "\nEstado: "
+                + estado + "\n\nCLIENTE\n" + cliente.toString() + "\n";
+        for (int i = 0; i < detalle.size(); i++){
+            result = result + "\nDetalle " + (i+1) + ":\n" + 
+                    detalle.get(i).toString() + "\n";
+        }
+        result = result + "\nTotal a pagar: " + calcPrecio();
         return result;
-        // Falta agregar el toString() de detalle
     }
 }
 
 class DetalleOrden {
     private int cantidad;
     private Articulo articulo;
+    private OrdenCompra orden;
     
-    public DetalleOrden(Articulo art_aux, int cant_aux){
+    public DetalleOrden(OrdenCompra order){
+        orden = order;
+    }
+    
+    public void Pedido(Articulo art_aux, int cant_aux){
         articulo = art_aux;
         cantidad = cant_aux;
     }
@@ -95,6 +125,13 @@ class DetalleOrden {
     }
     public int getCantidad(){
         return cantidad;
+    }
+    public Articulo getArticulo(){
+        return articulo;
+    }
+    
+    public String toString(){
+        return "Articulo: " + articulo.toString() + "\nCantidad: " + cantidad;
     }
 }
 

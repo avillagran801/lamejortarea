@@ -1,5 +1,4 @@
 package lamejortarea;
-import java.util.Date;
 import java.util.Calendar; //Se usa Calendar para "sumar" meses
 
 public class LaMejorTarea {
@@ -23,28 +22,26 @@ public class LaMejorTarea {
         Articulo art4 = new Articulo(0.5f, "Queso", "Queso mantequeso laminado", 4990);
         Articulo art5 = new Articulo(2.5f, "Torta", "Torta de frutos rojos", 13990);
         
-        // CREACIÓN ORDEN DE COMPRA, ASIGNAR CLIENTE Y AGREGAR ÓRDENES
+        // CREACIÓN ORDEN DE COMPRA, DETALLE, ASIGNAR CLIENTE Y AGREGAR ÓRDENES
         
         OrdenCompra orden = new OrdenCompra();
-        
-        // Pepancho: DetalleOrden Detalle = new DetalleOrden(orden);
-        // Para que sea composición
-        
         orden.asignarCliente(cliente2);
-        orden.agregarOrden(art1, 3);
-        orden.agregarOrden(art2, 5);
+        
+        DetalleOrden detalle1 = new DetalleOrden(orden);
+        DetalleOrden detalle2 = new DetalleOrden(orden);
+        
+        detalle1.Pedido(art1, 3);
+        detalle2.Pedido(art2, 5);
+        orden.agregarPedido(detalle1);
+        orden.agregarPedido(detalle2);
         
         // IMPRIMIR INFORMACIÓN RELACIONADA A LA COMPRA
-        // Pepancho: No habría que crear un toString que haga todo esto?
         
         System.out.println("Sin IVA: $" + orden.calcPrecioSinIVA());
         System.out.println("IVA: $" + orden.calcIVA());
         System.out.println("Total: $" + orden.calcPrecio());
         System.out.println("Peso: " + orden.calcPeso() + " kilos");
-        //System.out.println("Fecha: " + orden.getFecha());
-        // Pepancho: Al momento de hacer toString, se escribiría como fecha
-        // Por mientras, getFecha() devolverá la ensalada de números de
-        // calendar.
+        System.out.println(orden.toString());
         
     }
     

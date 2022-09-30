@@ -7,6 +7,9 @@ abstract class DocTributario {
     protected String rut;    // y fecha son protected en vez de private para que
     protected Calendar fecha;// sean heredables
     
+    protected String direccion; // Le agregamos dirección para que haya una
+                                   // relación, como lo pide UML
+    
     public String getNumero(){
         return numero;
     }
@@ -27,6 +30,12 @@ class Boleta extends DocTributario{
     public void AsociarBoleta(OrdenCompra order_aux){
         rut = order_aux.getCliente().getRut();
         fecha = order_aux.getFecha();
+        direccion = order_aux.getCliente().getDireccion();
+    }
+    
+    public String toString(){
+        return "DETALLES BOLETA\nRut: " + rut + "\nDireccion: " + direccion +
+                "\nFecha: " + fecha.getTime();
     }
 }
 
@@ -38,5 +47,10 @@ class Factura extends DocTributario{
     public void AsociarFactura(OrdenCompra order_aux){
         rut = order_aux.getCliente().getRut();
         fecha = order_aux.getFecha();
+    }
+    
+    public String toString(){
+        return "DETALLES FACTURA\nRut: " + rut + "\nDireccion: " + direccion +
+                "\nFecha: " + fecha.getTime();
     }
 }
