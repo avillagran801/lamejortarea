@@ -8,7 +8,7 @@ abstract class DocTributario {
     protected Calendar fecha;// sean heredables
     
     protected String direccion; // Le agregamos dirección para que haya una
-                                   // relación, como lo pide UML
+                                   // relación, como lo pide el UML
     
     public String getNumero(){
         return numero;
