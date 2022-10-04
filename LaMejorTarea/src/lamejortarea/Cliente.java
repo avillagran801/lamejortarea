@@ -74,6 +74,6 @@ class Direccion{
         
         return "Direccion: " + direccion + "\n\nClientes asociados:" + 
                 clientes_aux + "\n\nDocumentos tributarios asociados:" + 
-                docTributarios_aux;
+                docTributarios_aux + "\n";
     }
 }

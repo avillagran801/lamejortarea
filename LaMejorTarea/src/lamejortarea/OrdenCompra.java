@@ -78,7 +78,7 @@ class OrdenCompra {
     }
     
     public void setPago(float dinero){
-        pago = pago - dinero;
+        pago = dinero;
         if(pago == 0){
             setEstado("Completado!");
         }
@@ -92,7 +92,7 @@ class OrdenCompra {
             result = result + "\nDetalle " + (i+1) + ":\n" + 
                     detalle.get(i).toString() + "\n";
         }
-        result = result + "\nTotal a pagar: " + calcPrecio() +"\n";
+        result = result + "\nTotal a pagar: " + pago +"\n";
         return result;
     }
 }

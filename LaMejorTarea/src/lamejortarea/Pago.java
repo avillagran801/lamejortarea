@@ -32,17 +32,14 @@ class Efectivo extends Pago{
         if (cuotas != 1 && cuotas !=0){
             float monto_aux;
             monto_aux = order.getPago()/(float)cuotas;
-            if (monto - monto > 0){
-                System.out.println("Dinero insuficiente.");
-                return;
-            }
             System.out.println("Primera cuota a pagar: " + monto_aux);
-            System.out.println("Se le devolverá: " + calcDevolucion(order));
+            System.out.println("Se le devolverá: " + (monto - monto_aux));
             fecha.add(Calendar.MONTH, 1);
-            System.out.println("Próxima cuota a pagar: " + monto_aux + "en " + 
+            System.out.println("Próxima cuota a pagar: " + monto_aux + " en " + 
                     fecha.getTime());
             fecha.add(Calendar.MONTH, -1);
             order.setPago(monto_aux*(cuotas-1));
+            monto = monto - monto_aux;
         } else {
             if (order.getPago() - monto > 0){
                 order.setPago(order.getPago()-monto);
@@ -50,14 +47,14 @@ class Efectivo extends Pago{
                 return;
             }
             System.out.println("Monto a pagar: " + order.getPago());
-            System.out.println("Se le devolverá: " + calcDevolucion(order));
+            System.out.println("Se le devolverá: " + calcDevolucion(order) + "\n");
             monto = calcDevolucion(order);
             order.setPago(0f);
         }
     }
     
     public String toString(){
-        return "Dinero: " + monto + "\nFecha: " + fecha.getTime();
+        return "Dinero: " + monto + "\nFecha: " + fecha.getTime() + "\n";
     }
 }
 
@@ -104,6 +101,7 @@ class Transferencia extends Pago{
                     fecha.getTime());
             fecha.add(Calendar.MONTH, -1);
             order.setPago(monto_aux*(cuotas-1));
+            monto = monto - monto_aux;
         } else {
             if (order.getPago() - monto > 0){
                 order.setPago(order.getPago()-monto);
@@ -155,6 +153,7 @@ class Tarjeta extends Pago{
                     fecha.getTime());
             fecha.add(Calendar.MONTH, -1);
             order.setPago(monto_aux*(cuotas-1));
+            monto = monto - monto_aux;
         } else {
             if (order.getPago() - monto > 0){
                 order.setPago(order.getPago()-monto);

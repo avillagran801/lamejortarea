@@ -51,7 +51,14 @@ public class LaMejorTarea {
         direccion1.addClientes(cliente1);
         direccion1.addDocTriburarios(boleta1);
         System.out.println(direccion1.toString());
+     
+        Efectivo dinero1 = new Efectivo();
+        System.out.println(dinero1.toString());
+        dinero1.añadirMonto(50000);
+        dinero1.Pago(orden, 5);
+        System.out.println(dinero1.toString());
         
+        System.out.println(orden.toString());
     }
     
 }
