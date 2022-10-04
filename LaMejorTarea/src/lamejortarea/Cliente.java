@@ -1,4 +1,5 @@
 package lamejortarea;
+import java.util.ArrayList;
 
 
 class Cliente{
@@ -38,9 +39,13 @@ class Cliente{
 
 class Direccion{
     private String direccion;
+    private ArrayList<Cliente> clientes;
+    private ArrayList<DocTributario> docTributarios;
     
     public Direccion(String direc_aux){
         direccion = direc_aux;
+        clientes = new ArrayList<Cliente>();
+        docTributarios = new ArrayList<DocTributario>();
     }
     
     public String getDireccion(){
@@ -49,7 +54,23 @@ class Direccion{
     public void cambiarDireccion(String direccion_aux){
         direccion = direccion_aux;
     }
+    public void addClientes(Cliente c_aux){
+        clientes.add(c_aux);
+    }
+    public void addDocTriburarios(DocTributario doc_aux){
+        docTributarios.add(doc_aux);
+    }
     public String toString(){
-        return "Direccion: " + direccion;
+        String clientes_aux = "";
+        String docTributarios_aux = "";
+        
+        for(int i=0; i<clientes.size(); ++i){
+            clientes_aux = clientes_aux + "\n" + clientes.get(i).getNombre();
+        }
+        for(int i=0; i<docTributarios.size(); ++i){
+            docTributarios_aux = docTributarios_aux + docTributarios.get(i).getNumero();
+        }
+        
+        return "Direccion: " + direccion + "\n\nClientes asociados:" + clientes_aux + "\n\nDocumentos tributarios asociados:" + docTributarios_aux;
     }
 }

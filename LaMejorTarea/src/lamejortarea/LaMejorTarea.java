@@ -36,12 +36,18 @@ public class LaMejorTarea {
         orden.agregarPedido(detalle2);
         
         // IMPRIMIR INFORMACIÓN RELACIONADA A LA COMPRA
-        
+        /*
         System.out.println("Sin IVA: $" + orden.calcPrecioSinIVA());
         System.out.println("IVA: $" + orden.calcIVA());
         System.out.println("Total: $" + orden.calcPrecio());
         System.out.println("Peso: " + orden.calcPeso() + " kilos");
         System.out.println(orden.toString());
+        */
+        
+        direccion1.addClientes(cliente2);
+        direccion1.addClientes(cliente1);
+        // direccion1.addDocTriburarios();
+        System.out.println(direccion1.toString());
         
     }
     
