@@ -36,17 +36,20 @@ public class LaMejorTarea {
         orden.agregarPedido(detalle2);
         
         // IMPRIMIR INFORMACIÓN RELACIONADA A LA COMPRA
-        /*
-        System.out.println("Sin IVA: $" + orden.calcPrecioSinIVA());
+        
+        /*System.out.println("Sin IVA: $" + orden.calcPrecioSinIVA());
         System.out.println("IVA: $" + orden.calcIVA());
         System.out.println("Total: $" + orden.calcPrecio());
         System.out.println("Peso: " + orden.calcPeso() + " kilos");
-        System.out.println(orden.toString());
         */
+        System.out.println(orden.toString());
+        
+        Boleta boleta1 = new Boleta("749365");
+        Factura factura2 = new Factura("6495663");
         
         direccion1.addClientes(cliente2);
         direccion1.addClientes(cliente1);
-        // direccion1.addDocTriburarios();
+        direccion1.addDocTriburarios(boleta1);
         System.out.println(direccion1.toString());
         
     }

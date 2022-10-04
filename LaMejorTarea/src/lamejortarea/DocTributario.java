@@ -23,8 +23,9 @@ abstract class DocTributario {
 
 class Boleta extends DocTributario{
     
-    public Boleta(){
+    public Boleta(String n){
         super();
+        numero = n;
     }
     
     public void AsociarBoleta(OrdenCompra order_aux){
@@ -40,8 +41,9 @@ class Boleta extends DocTributario{
 }
 
 class Factura extends DocTributario{
-    public Factura(){
+    public Factura(String n){
         super();
+        numero = n;
     }
     
     public void AsociarFactura(OrdenCompra order_aux){

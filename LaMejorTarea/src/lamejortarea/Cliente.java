@@ -33,7 +33,7 @@ class Cliente{
     }
     
     public String toString(){
-        return "Nombre: " + nombre + "\nRut: " + rut +"\n" + direccion.toString();
+        return "Nombre: " + nombre + "\nRut: " + rut +"\n" + direccion.getDireccion();
     }
 }
 
@@ -68,9 +68,12 @@ class Direccion{
             clientes_aux = clientes_aux + "\n" + clientes.get(i).getNombre();
         }
         for(int i=0; i<docTributarios.size(); ++i){
-            docTributarios_aux = docTributarios_aux + docTributarios.get(i).getNumero();
+            docTributarios_aux = docTributarios_aux + "\n" + 
+                    docTributarios.get(i).getNumero();
         }
         
-        return "Direccion: " + direccion + "\n\nClientes asociados:" + clientes_aux + "\n\nDocumentos tributarios asociados:" + docTributarios_aux;
+        return "Direccion: " + direccion + "\n\nClientes asociados:" + 
+                clientes_aux + "\n\nDocumentos tributarios asociados:" + 
+                docTributarios_aux;
     }
 }

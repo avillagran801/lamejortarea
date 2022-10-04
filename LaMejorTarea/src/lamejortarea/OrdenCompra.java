@@ -7,7 +7,7 @@ class OrdenCompra {
     private String estado;
     private ArrayList<DetalleOrden> detalle;
     private Cliente cliente;
-    private float pago; // Para jugar con el pago. Cuanto falta para pagar la
+    private float pago; // Para jugar con el pago. Cuánto falta para pagar la
                         // orden completa.
     
     public OrdenCompra(){
@@ -92,7 +92,7 @@ class OrdenCompra {
             result = result + "\nDetalle " + (i+1) + ":\n" + 
                     detalle.get(i).toString() + "\n";
         }
-        result = result + "\nTotal a pagar: " + calcPrecio();
+        result = result + "\nTotal a pagar: " + calcPrecio() +"\n";
         return result;
     }
 }
