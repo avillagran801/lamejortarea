@@ -1,11 +1,6 @@
 package lamejortarea;
-import java.util.Date;
 import java.util.Calendar; //Se usa Calendar para "sumar" meses
 
-/**
- *
- * @author joscortes2021
- */
 public class LaMejorTarea {
 
     public static void main(String[] args) {
@@ -27,25 +22,43 @@ public class LaMejorTarea {
         Articulo art4 = new Articulo(0.5f, "Queso", "Queso mantequeso laminado", 4990);
         Articulo art5 = new Articulo(2.5f, "Torta", "Torta de frutos rojos", 13990);
         
-        // CREACIÓN ORDEN DE COMPRA, ASIGNAR CLIENTE Y AGREGAR ÓRDENES
+        // CREACIÓN ORDEN DE COMPRA, DETALLE, ASIGNAR CLIENTE Y AGREGAR ÓRDENES
         
         OrdenCompra orden = new OrdenCompra();
-        
-        // Pepancho dice: DetalleOrden Detalle = new DetalleOrden(orden);
-        // Para que sea composición
-        
         orden.asignarCliente(cliente2);
-        orden.agregarOrden(art1, 3);
-        orden.agregarOrden(art2, 5);
+        
+        DetalleOrden detalle1 = new DetalleOrden(orden);
+        DetalleOrden detalle2 = new DetalleOrden(orden);
+        
+        detalle1.Pedido(art1, 3);
+        detalle2.Pedido(art2, 5);
+        orden.agregarPedido(detalle1);
+        orden.agregarPedido(detalle2);
         
         // IMPRIMIR INFORMACIÓN RELACIONADA A LA COMPRA
         
-        System.out.println("Sin IVA: $" + orden.calcPrecioSinIVA());
+        /*System.out.println("Sin IVA: $" + orden.calcPrecioSinIVA());
         System.out.println("IVA: $" + orden.calcIVA());
         System.out.println("Total: $" + orden.calcPrecio());
         System.out.println("Peso: " + orden.calcPeso() + " kilos");
-        System.out.println("Fecha: " + orden.getFecha());
+        */
+        System.out.println(orden.toString());
         
+        Boleta boleta1 = new Boleta("749365");
+        Factura factura2 = new Factura("6495663");
+        
+        direccion1.addClientes(cliente2);
+        direccion1.addClientes(cliente1);
+        direccion1.addDocTriburarios(boleta1);
+        System.out.println(direccion1.toString());
+     
+        Efectivo dinero1 = new Efectivo();
+        System.out.println(dinero1.toString());
+        dinero1.añadirMonto(50000);
+        dinero1.Pago(orden, 5);
+        System.out.println(dinero1.toString());
+        
+        System.out.println(orden.toString());
     }
     
 }
