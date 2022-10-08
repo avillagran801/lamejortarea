@@ -1,4 +1,4 @@
-# lamejortarea
+# LaMejorTarea
 
 - José Francisco Cortés Pizarro
 - Ana Sofía Villagrán Pardo
