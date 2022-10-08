@@ -30,31 +30,31 @@ class Efectivo extends Pago{
         }
         System.out.println("Usted pagará en " + cuotas + " cuota(s)");
         if (cuotas != 1 && cuotas !=0){
-            float monto_aux;
+            float monto_aux; //El monto a pagar, en cuotas.
             monto_aux = order.getPago()/(float)cuotas;
             System.out.println("Primera cuota a pagar: " + monto_aux);
-            System.out.println("Se le devolverá: " + (monto - monto_aux));
+            System.out.println("Se le devolverá: $" + (monto - monto_aux));
             fecha.add(Calendar.MONTH, 1);
-            System.out.println("Próxima cuota a pagar: " + monto_aux + " en " + 
-                    fecha.getTime());
+            System.out.println("Próxima cuota a pagar: $" + monto_aux + " en " + 
+                    fecha.getTime()+ "\n");
             fecha.add(Calendar.MONTH, -1);
             order.setPago(monto_aux*(cuotas-1));
             monto = monto - monto_aux;
         } else {
             if (order.getPago() - monto > 0){
                 order.setPago(order.getPago()-monto);
-                System.out.println("Falta por pagar: " + order.getPago());
+                System.out.println("Falta por pagar: $" + order.getPago()+ "\n");
                 return;
             }
-            System.out.println("Monto a pagar: " + order.getPago());
-            System.out.println("Se le devolverá: " + calcDevolucion(order) + "\n");
+            System.out.println("Monto a pagar: $" + order.getPago());
+            System.out.println("Se le devolverá: $" + calcDevolucion(order) + "\n");
             monto = calcDevolucion(order);
             order.setPago(0f);
         }
     }
     
     public String toString(){
-        return "Dinero: " + monto + "\nFecha: " + fecha.getTime() + "\n";
+        return "Dinero: $" + monto + "\nFecha: " + fecha.getTime() + "\n";
     }
 }
 
@@ -83,32 +83,32 @@ class Transferencia extends Pago{
     
     public String toString(){
         return "Banco: " + banco + "\nNúmero de cuenta: " + numCuenta +
-                "\nDinero: " + monto + "\nFecha: " + fecha.getTime();
+                "\nDinero: $" + monto + "\nFecha: " + fecha.getTime() + "\n";
     }
     
     public void Pago(OrdenCompra order, int cuotas){
         if (cuotas < 0){
-            System.out.println ("Intentelo de nuevo");
+            System.out.println ("Intentelo de nuevo\n");
             return;
         }
         System.out.println("Usted pagará en " + cuotas + " cuota(s)");
         if (cuotas != 1 && cuotas !=0){
-            float monto_aux;
+            float monto_aux; //El monto a pagar, en cuotas.
             monto_aux = order.getPago()/(float)cuotas;
-            System.out.println("Primera cuota a pagar: " + monto_aux);
+            System.out.println("Primera cuota a pagar: $" + monto_aux);
             fecha.add(Calendar.MONTH, 1);
-            System.out.println("Próxima cuota a pagar: " + monto_aux + "en " + 
-                    fecha.getTime());
+            System.out.println("Próxima cuota a pagar: $" + monto_aux + "en " + 
+                    fecha.getTime() + "\n");
             fecha.add(Calendar.MONTH, -1);
             order.setPago(monto_aux*(cuotas-1));
             monto = monto - monto_aux;
         } else {
             if (order.getPago() - monto > 0){
                 order.setPago(order.getPago()-monto);
-                System.out.println("Falta por pagar: " + order.getPago());
+                System.out.println("Falta por pagar: $" + order.getPago() + "\n");
                 return;
             }
-            System.out.println("Monto a pagar: " + order.getPago());
+            System.out.println("Monto a pagar: $" + order.getPago() + "\n");
             monto = monto - order.getPago();
             order.setPago(0f);
         }
@@ -140,27 +140,27 @@ class Tarjeta extends Pago{
     
     public void Pago(OrdenCompra order, int cuotas){
         if (cuotas < 0){
-            System.out.println ("Intentelo de nuevo");
+            System.out.println ("Intentelo de nuevo\n");
             return;
         }
         System.out.println("Usted pagará en " + cuotas + " cuota(s)");
         if (cuotas != 1 && cuotas !=0){
-            float monto_aux;
+            float monto_aux; //El monto a pagar, en cuotas.
             monto_aux = order.getPago()/(float)cuotas;
-            System.out.println("Primera cuota a pagar: " + monto_aux);
+            System.out.println("Primera cuota a pagar: $" + monto_aux);
             fecha.add(Calendar.MONTH, 1);
-            System.out.println("Próxima cuota a pagar: " + monto_aux + "en " + 
-                    fecha.getTime());
+            System.out.println("Próxima cuota a pagar: $" + monto_aux + "en " + 
+                    fecha.getTime() + "\n");
             fecha.add(Calendar.MONTH, -1);
             order.setPago(monto_aux*(cuotas-1));
             monto = monto - monto_aux;
         } else {
             if (order.getPago() - monto > 0){
                 order.setPago(order.getPago()-monto);
-                System.out.println("Falta por pagar: " + order.getPago());
+                System.out.println("Falta por pagar: $" + order.getPago() + "\n");
                 return;
             }
-            System.out.println("Monto a pagar: " + order.getPago());
+            System.out.println("Monto a pagar: $" + order.getPago() + "\n");
             monto = monto - order.getPago();
             order.setPago(0f);
         }
@@ -168,6 +168,6 @@ class Tarjeta extends Pago{
     
     public String toString(){
         return "Tipo: " + tipo + "\nNumero de Transaccion: " + numTransaccion +
-                "\nDinero: " + monto + "\nFecha: " + fecha.getTime();
+                "\nDinero: $" + monto + "\nFecha: " + fecha.getTime() + "\n";
     }
 }

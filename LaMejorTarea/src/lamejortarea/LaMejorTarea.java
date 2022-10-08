@@ -37,11 +37,10 @@ public class LaMejorTarea {
         
         // IMPRIMIR INFORMACIÓN RELACIONADA A LA COMPRA
         
-        /*System.out.println("Sin IVA: $" + orden.calcPrecioSinIVA());
+        System.out.println("Sin IVA: $" + orden.calcPrecioSinIVA());
         System.out.println("IVA: $" + orden.calcIVA());
         System.out.println("Total: $" + orden.calcPrecio());
         System.out.println("Peso: " + orden.calcPeso() + " kilos");
-        */
         System.out.println(orden.toString());
         
         Boleta boleta1 = new Boleta("749365");

@@ -8,7 +8,7 @@ class OrdenCompra {
     private ArrayList<DetalleOrden> detalle;
     private Cliente cliente;
     private float pago; // Para jugar con el pago. Cuánto falta para pagar la
-                        // orden completa.
+                        // orden completa, lo que cambiará el estado.
     
     public OrdenCompra(){
         detalle = new ArrayList<DetalleOrden>(); // Crea el arreglo de detalles
@@ -17,8 +17,8 @@ class OrdenCompra {
         pago = 0f;
     }
     
-    public void agregarPedido(DetalleOrden detail){ // Creamos la orden de un nuevo ítem
-        detalle.add(detail);
+    public void agregarPedido(DetalleOrden detail){ // Creamos la orden de un 
+        detalle.add(detail);                        // nuevo ítem
         pago = calcPrecio();
     }
     public void asignarCliente(Cliente cliente_aux){
@@ -84,15 +84,17 @@ class OrdenCompra {
         }
     }
     
+    // EL toString SOLO MOSTRARÁ EL PRECIO CALCULADO CON IVA.
     public String toString(){
         String result;
-        result = "DETALLES DE ORDEN\nFecha: " + fecha.getTime() + "\nEstado: "
-                + estado + "\n\nCLIENTE\n" + cliente.toString() + "\n";
+        result = "==========\nDETALLES DE ORDEN\nFecha: " + fecha.getTime() + 
+                "\nEstado: " + estado + "\n\nCLIENTE\n" + cliente.toString() + 
+                "\n";
         for (int i = 0; i < detalle.size(); i++){
             result = result + "\nDetalle " + (i+1) + ":\n" + 
                     detalle.get(i).toString() + "\n";
         }
-        result = result + "\nTotal a pagar: " + pago +"\n";
+        result = result + "\nTotal a pagar: $" + pago +"\n==========\n";
         return result;
     }
 }
@@ -100,10 +102,8 @@ class OrdenCompra {
 class DetalleOrden {
     private int cantidad;
     private Articulo articulo;
-    private OrdenCompra orden;
     
     public DetalleOrden(OrdenCompra order){
-        orden = order;
     }
     
     public void Pedido(Articulo art_aux, int cant_aux){
@@ -131,7 +131,7 @@ class DetalleOrden {
     }
     
     public String toString(){
-        return "Articulo: " + articulo.toString() + "\nCantidad: " + cantidad;
+        return articulo.toString() + "\nCantidad: " + cantidad;
     }
 }
 
@@ -141,12 +141,15 @@ class Articulo {
     private String descripcion;
     private float precio;
     
+    // Los setters de Articulo de incluyen en el mismo método de construcción
+    // para más facilidad.
     public Articulo(float peso_aux, String nombre_aux, String desc_aux, float precio_aux){
         peso = (float)peso_aux;
         nombre = nombre_aux;
         descripcion = desc_aux;
         precio = (float)precio_aux;
     }
+    
     public float getPeso(){
         return peso;
     }
@@ -172,7 +175,7 @@ class Articulo {
         precio = precio_aux;
     }
     public String toString(){
-        return "Nombre: " + nombre + "\nDescripcion: " + descripcion +
-                "\nPeso (en kg): " + peso + "\nPrecio: " + precio;
+        return "ARTICULO\nNombre: " + nombre + "\nDescripcion: " + descripcion +
+                "\nPeso (en kg): " + peso + "\nPrecio: $" + precio + "\n";
     }
 }

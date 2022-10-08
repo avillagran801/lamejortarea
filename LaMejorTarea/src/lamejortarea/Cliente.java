@@ -28,12 +28,15 @@ class Cliente{
     public void cambiarRut(String rut_aux){
         rut = rut_aux;
     }
-    public void cambiarDireccion(String direccion_aux){ // Usa el método del
-        direccion.cambiarDireccion(direccion_aux);   // mismo nombre en la clase Direccion
+    public void cambiarDireccion(String direccion_aux){ 
+        direccion.cambiarDireccion(direccion_aux);  // Usa el método del
+                                                    // mismo nombre en la clase 
+                                                    // Direccion
     }
     
     public String toString(){
-        return "Nombre: " + nombre + "\nRut: " + rut +"\n" + direccion.getDireccion();
+        return "Nombre: " + nombre + "\nRut: " + rut +"\n" 
+                + direccion.getDireccion() + "\n";
     }
 }
 

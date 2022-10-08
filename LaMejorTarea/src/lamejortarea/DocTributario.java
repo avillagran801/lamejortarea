@@ -36,7 +36,7 @@ class Boleta extends DocTributario{
     
     public String toString(){
         return "DETALLES BOLETA\nRut: " + rut + "\nDireccion: " + direccion +
-                "\nFecha: " + fecha.getTime();
+                "\nFecha: " + fecha.getTime() + "\n";
     }
 }
 
@@ -53,6 +53,6 @@ class Factura extends DocTributario{
     
     public String toString(){
         return "DETALLES FACTURA\nRut: " + rut + "\nDireccion: " + direccion +
-                "\nFecha: " + fecha.getTime();
+                "\nFecha: " + fecha.getTime()+ "\n";
     }
 }
